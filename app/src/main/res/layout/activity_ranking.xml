@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.RankingActivity"
+    android:background="@drawable/ranking_background">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/rl_rank1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/image_rank_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/lee_zii_jia"
+                android:visibility="invisible"
+                ></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/name_rank_1"
+                android:gravity="center"
+                android:layout_below="@id/image_rank_1"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rank_number_1"
+                android:layout_below="@id/name_rank_1"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                ></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/points_1"
+                android:layout_below="@id/rank_number_1"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                ></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tournaments_1"
+                android:layout_below="@id/points_1"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                ></TextView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_rank2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_rank1"
+            android:layout_marginTop="-50dp"
+            android:layout_marginStart="20dp">
+
+            <ImageView
+                android:id="@+id/image_rank_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/lee_zii_jia"
+                android:visibility="invisible"
+                ></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/name_rank_2"
+                android:gravity="center"
+                android:layout_below="@id/image_rank_2"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                android:textSize="10sp">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rank_number_2"
+                android:layout_below="@id/name_rank_2"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                ></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/points_2"
+                android:layout_below="@id/rank_number_2"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                ></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tournaments_2"
+                android:layout_below="@id/points_2"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                ></TextView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_rank3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_rank1"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-50dp"
+            android:layout_marginEnd="20dp">
+
+            <ImageView
+                android:id="@+id/image_rank_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/lee_zii_jia"
+                android:visibility="invisible"
+                ></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/name_rank_3"
+                android:layout_below="@id/image_rank_3"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                android:textSize="10sp">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rank_number_3"
+                android:gravity="center"
+                android:layout_below="@id/name_rank_3"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                ></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/points_3"
+                android:layout_below="@id/rank_number_3"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                ></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tournaments_3"
+                android:layout_below="@id/points_3"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                ></TextView>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/player_rank_rv"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+      ></androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player_rank_rv">
+
+        <ImageButton
+            android:id="@+id/men_single"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_weight="1"
+            android:background="@drawable/ic_ms"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/women_single"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/ic_ws"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/men_single" />
+
+        <ImageButton
+            android:id="@+id/men_double"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/ic_md"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/women_single" />
+
+        <ImageButton
+            android:id="@+id/women_double"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/ic_wd"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/men_double" />
+
+        <ImageButton
+            android:id="@+id/mix_double"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="24dp"
+            android:layout_weight="1"
+            android:background="@drawable/ic_xd"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/women_double" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
