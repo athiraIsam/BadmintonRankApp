@@ -18,7 +18,7 @@ public class RankingPresenter implements RankingContract.Presenter,RankingContra
 
     @Override
     public void onGetSingleRankingSuccess(List<PlayerSingleInfo> playerSingleInfos) {
-        this.mainView.onGetRankingSuccess(playerSingleInfos);
+        this.mainView.onGetSingleRankingSuccess(playerSingleInfos);
     }
 
     @Override

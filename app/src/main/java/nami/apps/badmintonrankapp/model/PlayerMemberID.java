@@ -4,7 +4,7 @@ import nami.apps.badmintonrankapp.R;
 
 public class PlayerMemberID {
 
-    public static int  getMenSingleImageID(int memberId)
+    public static int  getSinglePlayerImageID(int memberId)
     {
         switch (memberId)
         {
@@ -33,8 +33,30 @@ public class PlayerMemberID {
             case 64032: return R.drawable.kunlavut;
             case 77003: return R.drawable.sameer_verma;
             case 14587: return R.drawable.tommy_sugiarto;
+            case 35642: return R.drawable.ratchanok_intanon;
+            case 73173: return R.drawable.pusarla_v_sindhu;
+            case 87442: return R.drawable.an_se_young;
+            case 18228: return R.drawable.carolina_marin;
+            case 96713: return R.drawable.nozomi_okuhara;
+            case 96312: return R.drawable.akane_yamaguchi;
+            case 78778: return R.drawable.chen_yu_fei;
+            case 61427: return R.drawable.tai_tzu_ying;
+
             default: return R.drawable.unknown_player;
         }
+    }
 
+    public static int  getDoubleImageID(int memberId)
+    {
+        switch (memberId)
+        {
+
+            case 26394: return R.drawable.marcus_gideon;
+            case 80057: return R.drawable.kevin_sanjaya;
+            case 51074: return R.drawable.hendra_setiawan;
+            case 52749: return R.drawable.mohamad_ahsan;
+
+            default: return R.drawable.unknown_player;
+        }
     }
 }

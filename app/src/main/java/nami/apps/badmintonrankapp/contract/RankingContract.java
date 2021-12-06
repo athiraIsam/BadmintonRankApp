@@ -8,7 +8,7 @@ import nami.apps.badmintonrankapp.model.json.PlayerSingleInfo;
 public interface RankingContract {
 
     interface View{
-        void onGetRankingSuccess(List<PlayerSingleInfo> playerSingleInfos);
+        void onGetSingleRankingSuccess(List<PlayerSingleInfo> playerSingleInfos);
         void onGetDoubleRankingSuccess(List<PlayerDoubleInfo> playerDoubleInfos);
         void onFailure(String error);
     }

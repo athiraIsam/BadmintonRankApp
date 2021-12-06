@@ -19,6 +19,12 @@ public class PlayerDoubleInfo {
     @SerializedName("rank")
     String rank;
 
+    @SerializedName("member_id1")
+    Integer member_id1;
+
+    @SerializedName("member_id2")
+    Integer member_id2;
+
     @SerializedName("tournaments")
     String tournaments;
 
@@ -68,5 +74,21 @@ public class PlayerDoubleInfo {
 
     public void setTournaments(String tournaments) {
         this.tournaments = tournaments;
+    }
+
+    public Integer getMember_id1() {
+        return member_id1;
+    }
+
+    public void setMember_id1(Integer member_id1) {
+        this.member_id1 = member_id1;
+    }
+
+    public Integer getMember_id2() {
+        return member_id2;
+    }
+
+    public void setMember_id2(Integer member_id2) {
+        this.member_id2 = member_id2;
     }
 }

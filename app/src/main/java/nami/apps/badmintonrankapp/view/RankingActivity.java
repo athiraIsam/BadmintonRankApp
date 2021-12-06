@@ -6,15 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +19,8 @@ import nami.apps.badmintonrankapp.R;
 import nami.apps.badmintonrankapp.contract.RankingContract;
 import nami.apps.badmintonrankapp.model.PlayerMemberID;
 import nami.apps.badmintonrankapp.model.RankingModel;
-import nami.apps.badmintonrankapp.model.adapter.PlayerRecyclerViewAdapter;
+import nami.apps.badmintonrankapp.model.adapter.PlayerDoubleRecyclerViewAdapter;
+import nami.apps.badmintonrankapp.model.adapter.PlayerSingleRecyclerViewAdapter;
 import nami.apps.badmintonrankapp.model.json.PlayerDoubleInfo;
 import nami.apps.badmintonrankapp.model.json.PlayerSingleInfo;
 import nami.apps.badmintonrankapp.presenter.RankingPresenter;
@@ -33,12 +30,10 @@ public class RankingActivity extends AppCompatActivity implements RankingContrac
 
     RankingPresenter presenter;
     ImageButton ms,ws,md,wd,xd;
-    ImageView imRank1,imRank2,imRank3;
-    PlayerRecyclerViewAdapter adapter;
+    PlayerSingleRecyclerViewAdapter singlePlayerAdapter;
+    PlayerDoubleRecyclerViewAdapter doublePlayerAdapter;
     RecyclerView playerRecyclerView;
-    TextView name_rank1,name_rank2,name_rank3,
-    points_rank1,points_rank2,points_rank3,rank1,rank2,rank3,
-    tournaments_rank1,tournaments_rank2,tournaments_rank3;
+
     private ProgressDialog progressDialog;
 
     @Override
@@ -124,32 +119,6 @@ public class RankingActivity extends AppCompatActivity implements RankingContrac
 
         playerRecyclerView = findViewById(R.id.player_rank_rv);
 
-        name_rank1 = findViewById(R.id.name_rank_1);
-        name_rank2 = findViewById(R.id.name_rank_2);
-        name_rank3 = findViewById(R.id.name_rank_3);
-
-        points_rank1 = findViewById(R.id.points_1);
-        points_rank2 = findViewById(R.id.points_2);
-        points_rank3 = findViewById(R.id.points_3);
-
-        tournaments_rank1 = findViewById(R.id.tournaments_1);
-        tournaments_rank2 = findViewById(R.id.tournaments_2);
-        tournaments_rank3 = findViewById(R.id.tournaments_3);
-
-        rank1 = findViewById(R.id.rank_number_1);
-        rank2 = findViewById(R.id.rank_number_2);
-        rank3 = findViewById(R.id.rank_number_3);
-
-        imRank1 = findViewById(R.id.image_rank_1);
-        imRank2 = findViewById(R.id.image_rank_2);
-        imRank3 = findViewById(R.id.image_rank_3);
-
-        adapter = new PlayerRecyclerViewAdapter(this);
-        LinearLayoutManager layoutManager
-                = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        playerRecyclerView.setAdapter(adapter);
-        playerRecyclerView.setLayoutManager(layoutManager);
-
         this.progressDialog = new ProgressDialog(this);
         this.progressDialog.setTitle("Please Wait");
         this.progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -164,68 +133,42 @@ public class RankingActivity extends AppCompatActivity implements RankingContrac
 
     }
     @Override
-    public void onGetRankingSuccess(List<PlayerSingleInfo> playerSingleInfos) {
-
-        name_rank1.setText(playerSingleInfos.get(0).getPlayerName());
-        name_rank2.setText(playerSingleInfos.get(1).getPlayerName());
-        name_rank3.setText(playerSingleInfos.get(2).getPlayerName());
-
-        points_rank1.setText("Points: " + playerSingleInfos.get(0).getPoints());
-        points_rank2.setText("Points: " + playerSingleInfos.get(1).getPoints());
-        points_rank3.setText("Points: " + playerSingleInfos.get(2).getPoints());
-
-        tournaments_rank1.setText("Tournaments: " + playerSingleInfos.get(0).getTournaments());
-        tournaments_rank2.setText("Tournaments: " + playerSingleInfos.get(1).getTournaments());
-        tournaments_rank3.setText("Tournaments: " + playerSingleInfos.get(2).getTournaments());
+    public void onGetSingleRankingSuccess(List<PlayerSingleInfo> playerSingleInfos) {
 
         List<Integer> imageRes = new ArrayList<>();
         for(PlayerSingleInfo playerSingleInfo: playerSingleInfos)
-            imageRes.add(PlayerMemberID.getMenSingleImageID(playerSingleInfo.getMember_id()));
+            imageRes.add(PlayerMemberID.getSinglePlayerImageID(playerSingleInfo.getMember_id()));
 
-        adapter.setPlayerSingleInfos(playerSingleInfos);
-        adapter.setImagePlayer(imageRes);
+        singlePlayerAdapter = new PlayerSingleRecyclerViewAdapter(this);
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        playerRecyclerView.setAdapter(singlePlayerAdapter);
+        playerRecyclerView.setLayoutManager(layoutManager);
 
-        rank1.setText("Rank 1");
-        rank2.setText("Rank 2");
-        rank3.setText("Rank 3");
-
-        imRank1.setVisibility(View.VISIBLE);
-        imRank2.setVisibility(View.VISIBLE);
-        imRank3.setVisibility(View.VISIBLE);
-
-        imRank1.setImageResource(PlayerMemberID.getMenSingleImageID(playerSingleInfos.get(0).getMember_id()));
-        imRank2.setImageResource(PlayerMemberID.getMenSingleImageID(playerSingleInfos.get(1).getMember_id()));
-        imRank3.setImageResource(PlayerMemberID.getMenSingleImageID(playerSingleInfos.get(2).getMember_id()));
+        singlePlayerAdapter.setPlayerSingleInfos(playerSingleInfos);
+        singlePlayerAdapter.setImagePlayer(imageRes);
 
         this.progressDialog.dismiss();
     }
 
     @Override
     public void onGetDoubleRankingSuccess(List<PlayerDoubleInfo> playerDoubleInfos) {
-        name_rank1.setText(playerDoubleInfos.get(0).getPlayerName1()
-                + "/\n" + playerDoubleInfos.get(0).getPlayerName2());
-        name_rank2.setText(playerDoubleInfos.get(1).getPlayerName1()
-                + "/\n" + playerDoubleInfos.get(1).getPlayerName2());
-        name_rank3.setText(playerDoubleInfos.get(2).getPlayerName1()
-                + "/\n" + playerDoubleInfos.get(2).getPlayerName2());
+        List<Integer> imageResPlayer1 = new ArrayList<>();
+        List<Integer> imageResPlayer2 = new ArrayList<>();
+        for(PlayerDoubleInfo playerDoubleInfo: playerDoubleInfos) {
+            imageResPlayer1.add(PlayerMemberID.getDoubleImageID(playerDoubleInfo.getMember_id1()));
+            imageResPlayer2.add(PlayerMemberID.getDoubleImageID(playerDoubleInfo.getMember_id2()));
+        }
 
-        points_rank1.setText("Points: " + playerDoubleInfos.get(0).getPoints());
-        points_rank2.setText("Points: " + playerDoubleInfos.get(1).getPoints());
-        points_rank3.setText("Points: " + playerDoubleInfos.get(2).getPoints());
+        doublePlayerAdapter = new PlayerDoubleRecyclerViewAdapter(this);
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        playerRecyclerView.setAdapter(doublePlayerAdapter);
+        playerRecyclerView.setLayoutManager(layoutManager);
 
-        tournaments_rank1.setText("Tournaments: " + playerDoubleInfos.get(0).getTournaments());
-        tournaments_rank2.setText("Tournaments: " + playerDoubleInfos.get(1).getTournaments());
-        tournaments_rank3.setText("Tournaments: " + playerDoubleInfos.get(2).getTournaments());
-
-        adapter.setPlayerDoubleInfos(playerDoubleInfos);
-
-        rank1.setText("Rank 1");
-        rank2.setText("Rank 2");
-        rank3.setText("Rank 3");
-
-        imRank1.setVisibility(View.VISIBLE);
-        imRank2.setVisibility(View.VISIBLE);
-        imRank3.setVisibility(View.VISIBLE);
+        doublePlayerAdapter.setPlayerDoubleInfos(playerDoubleInfos);
+        doublePlayerAdapter.setImagePlayer1(imageResPlayer1);
+        doublePlayerAdapter.setImagePlayer2(imageResPlayer2);
 
         this.progressDialog.dismiss();
     }
